@@ -1,0 +1,86 @@
+package com.roleplay.phone.gui.config;
+
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+import org.bukkit.NamespacedKey;
+import org.bukkit.Registry;
+import org.bukkit.Sound;
+import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.entity.Player;
+
+public record GuiSound(Sound sound, float volume, float pitch) {
+   private static final Map<String, Sound> SOUND_REGISTRY_MAP = new HashMap();
+
+   private static synchronized void ensureInitialized() {
+      if (SOUND_REGISTRY_MAP.isEmpty()) {
+         try {
+            for(Sound s : Registry.SOUNDS) {
+               NamespacedKey key = Registry.SOUNDS.getKey(s);
+               if (key != null) {
+                  String rawKey = key.getKey();
+                  SOUND_REGISTRY_MAP.put(rawKey.toLowerCase(Locale.ROOT), s);
+                  SOUND_REGISTRY_MAP.put(key.toString().toLowerCase(Locale.ROOT), s);
+                  SOUND_REGISTRY_MAP.put(rawKey.replace('.', '_').toUpperCase(Locale.ROOT), s);
+               }
+            }
+         } catch (Throwable var4) {
+         }
+
+      }
+   }
+
+   public void play(Player player) {
+      if (player != null && player.isOnline() && this.sound != null) {
+         player.playSound(player.getLocation(), this.sound, this.volume, this.pitch);
+      }
+
+   }
+
+   public static Sound parseSound(String name, Sound fallback) {
+      if (name != null && !name.isBlank()) {
+         ensureInitialized();
+         String query = name.trim();
+         Sound match = (Sound)SOUND_REGISTRY_MAP.get(query.toUpperCase(Locale.ROOT));
+         if (match != null) {
+            return match;
+         } else {
+            match = (Sound)SOUND_REGISTRY_MAP.get(query.toLowerCase(Locale.ROOT));
+            if (match != null) {
+               return match;
+            } else {
+               try {
+                  NamespacedKey key = NamespacedKey.fromString(query.toLowerCase(Locale.ROOT));
+                  if (key != null) {
+                     Sound regSound = (Sound)Registry.SOUNDS.get(key);
+                     if (regSound != null) {
+                        return regSound;
+                     }
+                  }
+               } catch (Exception var6) {
+               }
+
+               return fallback;
+            }
+         }
+      } else {
+         return fallback;
+      }
+   }
+
+   public static GuiSound fromSection(ConfigurationSection sec, Sound fallbackSound, float fallbackVolume, float fallbackPitch) {
+      if (sec == null) {
+         return new GuiSound(fallbackSound, fallbackVolume, fallbackPitch);
+      } else {
+         float vol = (float)sec.getDouble("volume", (double)fallbackVolume);
+         float pitch = (float)sec.getDouble("pitch", (double)fallbackPitch);
+         String soundName = sec.getString("sound");
+         if (soundName != null && !soundName.isBlank()) {
+            Sound resolved = parseSound(soundName, fallbackSound);
+            return new GuiSound(resolved, vol, pitch);
+         } else {
+            return new GuiSound(fallbackSound, vol, pitch);
+         }
+      }
+   }
+}
