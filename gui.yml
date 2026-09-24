@@ -1,0 +1,340 @@
+# ==============================================================
+#            RoleplayPhone Complete GUI Customization
+#   Configurable sizes, slots, materials, lores, and audio
+# ==============================================================
+
+# --------------------------------------------------------------
+# 1. Main Home Screen
+# --------------------------------------------------------------
+main-menu:
+  title: "Phone Home Screen"
+  size: 27
+  filler:
+    material: "GRAY_STAINED_GLASS_PANE"
+    custom-model-data: 0
+    name: " "
+
+  device-info:
+    slot: 4
+
+  apps:
+    dialer:
+      slot: 10
+      material: "NOTE_BLOCK"
+      name: "<green><bold>Phone / Dialer</bold></green>"
+      lore:
+        - "<gray>Dial telephone numbers manually</gray>"
+        - " "
+        - "<yellow>▶ Click to open Keypad</yellow>"
+      sound:
+        sound: "UI_BUTTON_CLICK"
+        volume: 0.6
+        pitch: 1.2
+
+    contacts:
+      slot: 11
+      material: "BOOK"
+      name: "<yellow><bold>Contacts Directory</bold></yellow>"
+      lore:
+        - "<gray>Browse, call, or manage contacts</gray>"
+        - " "
+        - "<yellow>▶ Click to open Contacts</yellow>"
+      sound:
+        sound: "ITEM_BOOK_PAGE_TURN"
+        volume: 0.7
+        pitch: 1.3
+
+    messages:
+      slot: 13
+      material: "PAPER"
+      unread-material: "WRITABLE_BOOK"
+      name: "<gold><bold>Messages / SMS</bold></gold>"
+      lore:
+        - "<gray>Send and read text messages</gray>"
+        - "<unread_status>"
+        - " "
+        - "<aqua>▶ Click to view Inbox</aqua>"
+      sound:
+        sound: "ITEM_BOOK_PAGE_TURN"
+        volume: 0.7
+        pitch: 1.5
+
+    gps:
+      slot: 15
+      material: "COMPASS"
+      name: "<gold><bold>GPS Maps & Navigation</bold></gold>"
+      lore:
+        - "<gray>Turn-by-turn route navigation</gray>"
+        - "<route_status>"
+        - " "
+        - "<green>▶ Click to open Maps</green>"
+      sound:
+        sound: "ITEM_LODESTONE_COMPASS_LOCK"
+        volume: 0.6
+        pitch: 1.2
+
+    settings:
+      slot: 16
+      material: "REPEATER"
+      name: "<aqua><bold>Phone Settings</bold></aqua>"
+      lore:
+        - "<gray>Silent Mode: <silent_status></gray>"
+        - "<gray>Airplane Mode: <airplane_status></gray>"
+        - " "
+        - "<dark_gray>Left-Click: Toggle Silent</dark_gray>"
+        - "<dark_gray>Right-Click: Toggle Airplane</dark_gray>"
+      sound:
+        sound: "BLOCK_LEVER_CLICK"
+        volume: 0.6
+        pitch: 1.8
+
+# --------------------------------------------------------------
+# 2. Keypad / Dialer
+# --------------------------------------------------------------
+dialer:
+  title: "Dial Pad"
+  size: 54
+  filler:
+    material: "GRAY_STAINED_GLASS_PANE"
+    name: " "
+
+  screen:
+    slot: 4
+    material: "NAME_TAG"
+    name: "<gold>Number: <yellow><number></yellow></gold>"
+    lore:
+      - "<gray>Use the keypad buttons below to dial</gray>"
+
+  keypad:
+    material: "LIGHT_GRAY_CONCRETE"
+    click-sound:
+      sound: "BLOCK_NOTE_BLOCK_HAT"
+      volume: 0.5
+      pitch: 1.3
+    # Configurable slots for digits 0-9
+    slots:
+      "1": 12
+      "2": 13
+      "3": 14
+      "4": 21
+      "5": 22
+      "6": 23
+      "7": 30
+      "8": 31
+      "9": 32
+      "0": 40
+
+  backspace:
+    slot: 39
+    material: "REDSTONE_BLOCK"
+    name: "<red><bold>Backspace</bold></red>"
+    lore:
+      - "<gray>Delete last digit</gray>"
+    sound:
+      sound: "UI_BUTTON_CLICK"
+      volume: 0.5
+      pitch: 0.7
+
+  call:
+    slot: 41
+    material: "EMERALD_BLOCK"
+    name: "<green><bold>Place Call</bold></green>"
+    lore:
+      - "<gray>Click to dial line</gray>"
+    sound:
+      sound: "BLOCK_NOTE_BLOCK_CHIME"
+      volume: 0.8
+      pitch: 1.4
+
+  back-button:
+    slot: 49
+    material: "ARROW"
+    name: "<white>Back to Home Screen</white>"
+    sound:
+      sound: "UI_BUTTON_CLICK"
+      volume: 0.5
+      pitch: 0.9
+
+# --------------------------------------------------------------
+# 3. Contacts Directory
+# --------------------------------------------------------------
+contacts:
+  title: "Contacts Directory"
+  size: 54
+  filler:
+    material: "GRAY_STAINED_GLASS_PANE"
+    name: " "
+
+  add-contact:
+    slot: 48
+    material: "EMERALD"
+    name: "<green><bold>+ Add New Contact</bold></green>"
+    lore:
+      - "<gray>Type contact details in chat</gray>"
+    sound:
+      sound: "ITEM_BOOK_PAGE_TURN"
+      volume: 0.6
+      pitch: 1.4
+
+  back-button:
+    slot: 49
+    material: "ARROW"
+    name: "<white>Back to Home Screen</white>"
+    sound:
+      sound: "UI_BUTTON_CLICK"
+      volume: 0.5
+      pitch: 0.9
+
+  contact-click-sound:
+    sound: "UI_BUTTON_CLICK"
+    volume: 0.5
+    pitch: 1.2
+  contact-delete-sound:
+    sound: "BLOCK_ANVIL_BREAK"
+    volume: 0.4
+    pitch: 1.4
+
+# --------------------------------------------------------------
+# 4. SMS / Messages Inbox
+# --------------------------------------------------------------
+sms-inbox:
+  title: "Messages - Inbox"
+  size: 54
+  filler:
+    material: "GRAY_STAINED_GLASS_PANE"
+    name: " "
+
+  compose-new:
+    slot: 48
+    material: "EMERALD"
+    name: "<green><bold>+ Compose Message</bold></green>"
+    lore:
+      - "<gray>Click to draft a new text message</gray>"
+    sound:
+      sound: "ITEM_BOOK_PAGE_TURN"
+      volume: 0.6
+      pitch: 1.4
+
+  back-button:
+    slot: 49
+    material: "ARROW"
+    name: "<white>Back to Home Screen</white>"
+    sound:
+      sound: "UI_BUTTON_CLICK"
+      volume: 0.5
+      pitch: 0.9
+
+  thread-click-sound:
+    sound: "ITEM_BOOK_PAGE_TURN"
+    volume: 0.5
+    pitch: 1.2
+
+# --------------------------------------------------------------
+# 5. SMS Conversation View
+# --------------------------------------------------------------
+sms-conversation:
+  size: 54
+  filler:
+    material: "GRAY_STAINED_GLASS_PANE"
+    name: " "
+  sent-material: "LIME_STAINED_GLASS_PANE"
+  received-material: "LIGHT_BLUE_STAINED_GLASS_PANE"
+
+  reply:
+    slot: 48
+    material: "WRITABLE_BOOK"
+    name: "<aqua><bold>Reply / Compose</bold></aqua>"
+    lore:
+      - "<gray>Click to type your reply in chat</gray>"
+    sound:
+      sound: "ITEM_BOOK_PAGE_TURN"
+      volume: 0.6
+      pitch: 1.5
+
+  back-button:
+    slot: 49
+    material: "ARROW"
+    name: "<white>Back to Inbox</white>"
+    sound:
+      sound: "UI_BUTTON_CLICK"
+      volume: 0.5
+      pitch: 0.9
+
+# --------------------------------------------------------------
+# 6. Incoming & Active Calls
+# --------------------------------------------------------------
+incoming-call:
+  title: "Incoming Call..."
+  size: 27
+  caller-head-slot: 4
+  accept:
+    slot: 11
+    material: "LIME_CONCRETE"
+    name: "<green><bold>Accept / Pickup</bold></green>"
+    sound:
+      sound: "BLOCK_NOTE_BLOCK_BELL"
+      volume: 0.8
+      pitch: 1.5
+  decline:
+    slot: 15
+    material: "RED_CONCRETE"
+    name: "<red><bold>Decline Call</bold></red>"
+    sound:
+      sound: "BLOCK_NOTE_BLOCK_BASS"
+      volume: 0.7
+      pitch: 0.7
+
+active-call:
+  title: "Active Call"
+  size: 27
+  partner-head-slot: 4
+  hangup:
+    slot: 13
+    material: "RED_CONCRETE"
+    name: "<red><bold>Hang Up</bold></red>"
+    sound:
+      sound: "BLOCK_NOTE_BLOCK_BASS"
+      volume: 0.8
+      pitch: 0.6
+
+# --------------------------------------------------------------
+# 7. GPS Maps Destinations
+# --------------------------------------------------------------
+gps-destinations:
+  title: "GPS Maps - Destinations"
+  size: 54
+  filler:
+    material: "GRAY_STAINED_GLASS_PANE"
+    name: " "
+
+  cancel-route:
+    slot: 48
+    material: "BARRIER"
+    name: "<red><bold>Cancel Navigation</bold></red>"
+    sound:
+      sound: "BLOCK_FIRE_EXTINGUISH"
+      volume: 0.6
+      pitch: 1.4
+
+  back-button:
+    slot: 49
+    material: "ARROW"
+    name: "<white>Back to Home Screen</white>"
+    sound:
+      sound: "UI_BUTTON_CLICK"
+      volume: 0.5
+      pitch: 0.9
+
+  destination-click-sound:
+    sound: "ITEM_LODESTONE_COMPASS_LOCK"
+    volume: 0.8
+    pitch: 1.2
+
+  main-menu:
+    apps:
+      dialer:
+        slot: 10
+        material: "NOTE_BLOCK"
+        # Modern 1.21.2+ Item Model key:
+        item-model: "phone:gui_dialer_icon"
+        name: "<green><bold>Phone / Dialer</bold></green>"

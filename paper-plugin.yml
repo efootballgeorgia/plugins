@@ -1,0 +1,14 @@
+name: RoleplayPhone
+version: '1.0.0'
+main: com.roleplay.phone.PhonePlugin
+api-version: '1.21'
+author: RoleplayDev
+description: Modern Roleplay Phone & In-Game GPS Navigation System for Paper 1.21+
+prefix: Phone
+
+dependencies:
+  server:
+    voicechat:
+      load: BEFORE
+      required: false
+      join-classpath: true

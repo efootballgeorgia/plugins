@@ -1,0 +1,66 @@
+# ==============================================================
+#            RoleplayPhone Language & Messages Configuration
+#     Supports Adventure MiniMessage formatting (<red>, <bold>, etc.)
+# ==============================================================
+
+prefix: "<gray>[<gold><bold>Phone</bold></gray>] "
+
+general:
+  no-permission: "<red>✖ You do not have permission to execute this command.</red>"
+  player-only: "<red>Only in-game players can use phone features.</red>"
+  no-phone: "<red>✖ You do not have a phone in your inventory!</red>"
+  must-hold-phone: "<red>✖ You must be holding your phone in your main hand!</red>"
+  config-reloaded: "<green>✔ Configuration and messages reloaded successfully!</green>"
+
+calls:
+  dialing: "<green>Dialing <yellow><target></yellow>...</green>"
+  line-busy: "<red>✖ The line is currently busy.</red>"
+  airplane-mode-caller: "<red>✖ Cannot place calls: Airplane Mode is enabled on your phone.</red>"
+  airplane-mode-target: "<red>✖ Cannot connect: The subscriber is in Airplane Mode.</red>"
+  subscriber-unavailable: "<red>✖ The subscriber is unavailable or not carrying their phone.</red>"
+  self-call: "<red>✖ You cannot call your own phone number.</red>"
+  already-in-call: "<red>✖ You are already on an active call.</red>"
+  number-not-found: "<red>✖ The dialed number does not exist.</red>"
+  incoming-call-actionbar: "<green><bold>Incoming call from <caller>!</bold></green>"
+  calling-actionbar: "<yellow>Calling <target>... (<seconds>s)</yellow>"
+  call-connected: "<green><bold>✔ Call Connected.</bold> Voice and text relay active.</green>"
+  call-ended: "<red>✖ Call ended: <reason></red>"
+  call-declined: "<yellow>Call declined.</yellow>"
+  no-incoming-call: "<red>No incoming call to accept.</red>"
+  not-in-call: "<red>You are not currently in a call.</red>"
+  no-answer: "<red>No answer from <target>.</red>"
+  missed-call: "<yellow>Missed call from <caller>.</yellow>"
+
+contacts:
+  contact-added: "<green>✔ Added contact <gold><name></gold> (<yellow><number></yellow>) to your phone!</green>"
+  contact-removed: "<green>✔ Removed contact: <gold><name></gold>.</green>"
+  contact-not-found: "<red>✖ Contact not found: <name>.</red>"
+  invalid-device: "<red>✖ Invalid device SIM data.</red>"
+  setup-header: "<gold>--- New Contact Setup ---</gold>"
+  setup-prompt: "<gray>Type: <yellow><PlayerName> <PhoneNumber></yellow></gray>"
+  setup-example: "<dark_gray>Example: <white>Alex 555-1234</white></dark_gray>"
+  setup-cancel: "<red>Type 'cancel' to abort.</red>"
+  setup-cancelled: "<yellow>Contact creation cancelled.</yellow>"
+  invalid-format: "<red>✖ Invalid format. Expected: <PlayerName> <PhoneNumber></red>"
+
+gps:
+  route-calculated: "<green>✔ Route calculated to: <gold><bold><destination></bold></gold></green>"
+  arrived: "<green>✔ You have arrived at: <gold><bold><destination></bold></gold></green>"
+  cancelled: "<yellow>✖ GPS navigation cancelled.</yellow>"
+  recalculating: "<yellow>↻ Off course: recalculating route...</yellow>"
+  different-dimension: "<red>✖ Cannot navigate: destination is in another dimension.</red>"
+  unknown-destination: "<red>✖ Unknown destination: <destination></red>"
+  no-active-route: "<yellow>You do not have an active GPS route.</yellow>"
+  arrow-move-enter: "<gold><bold>--- GPS Arrow Move Mode ---</bold></gold>\n<yellow>• Scroll:</yellow> <white>Forward/Backward</white>\n<yellow>• Shift+Scroll:</yellow> <white>Up/Down</white>\n<gray>Run /phone gps move again to lock position.</gray>"
+  arrow-move-exit: "<yellow>✔ Exited Arrow Move Mode.</yellow>"
+
+sms:
+  message-sent: "<green>✔ Message sent to <gold><target></gold>.</green>"
+  message-received-actionbar: "<aqua>💬 New text from <gold><sender></gold>!</aqua>"
+  message-received-chat: "<gray>[<aqua>SMS</aqua>] <gold><sender></gold>: <white><message></white></gray>"
+  compose-header: "<gold>--- New Text Message ---</gold>"
+  compose-prompt: "<gray>Recipient: <gold><target></gold> (<yellow><number></yellow>)</gray>\n<gray>Type your message in chat, or type <red>'cancel'</red> to abort.</gray>"
+  compose-cancelled: "<yellow>Message creation cancelled.</yellow>"
+  empty-message: "<red>✖ Cannot send an empty text message.</red>"
+  target-airplane: "<red>✖ Cannot deliver text: Recipient has Airplane Mode enabled.</red>"
+  stored-offline: "<yellow>Recipient is currently offline. Message saved to their inbox.</yellow>"
