@@ -1,84 +1,66 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+# ============================================================== 
+#            RoleplayPhone Language & Messages Configuration
+#     Supports Adventure MiniMessage formatting (<red>, <bold>, etc.)
+# ============================================================== 
 
-    <groupId>com.roleplay</groupId>
-    <artifactId>roleplay-phone</artifactId>
-    <version>1.0.0</version>
-    <packaging>jar</packaging>
+prefix: "<gray>[<gold><bold>Phone</bold></gray>] "
 
-    <name>RoleplayPhone</name>
-    <description>Modern Roleplay Phone System for Paper 1.21+ with Simple Voice Chat Integration</description>
+general:
+  no-permission: "<red>✖ You do not have permission to execute this command.</red>"
+  player-only: "<red>Only in-game players can use phone features.</red>"
+  no-phone: "<red>✖ You do not have a phone in your inventory!</red>"
+  must-hold-phone: "<red>✖ You must be holding your phone in your main hand!</red>"
+  config-reloaded: "<green>✔ Configuration and messages reloaded successfully!</green>"
 
-    <properties>
-        <java.version>21</java.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <paper.version>1.21.4-R0.1-SNAPSHOT</paper.version>
-        <voicechat.version>2.5.0</voicechat.version>
-    </properties>
+calls:
+  dialing: "<green>Dialing <yellow><target></yellow>...</green>"
+  line-busy: "<red>✖ The line is currently busy.</red>"
+  airplane-mode-caller: "<red>✖ Cannot place calls: Airplane Mode is enabled on your phone.</red>"
+  airplane-mode-target: "<red>✖ Cannot connect: The subscriber is in Airplane Mode.</red>"
+  subscriber-unavailable: "<red>✖ The subscriber is unavailable or not carrying their phone.</red>"
+  self-call: "<red>✖ You cannot call your own phone number.</red>"
+  already-in-call: "<red>✖ You are already on an active call.</red>"
+  number-not-found: "<red>✖ The dialed number does not exist.</red>"
+  incoming-call-actionbar: "<green><bold>Incoming call from <caller>!</bold></green>"
+  calling-actionbar: "<yellow>Calling <target>... (<seconds>s)</yellow>"
+  call-connected: "<green><bold>✔ Call Connected.</bold> Voice and text relay active.</green>"
+  call-ended: "<red>✖ Call ended: <reason></red>"
+  call-declined: "<yellow>Call declined.</yellow>"
+  no-incoming-call: "<red>No incoming call to accept.</red>"
+  not-in-call: "<red>You are not currently in a call.</red>"
+  no-answer: "<red>No answer from <target>.</red>"
+  missed-call: "<yellow>Missed call from <caller>.</yellow>"
 
-    <repositories>
-        <!-- PaperMC Repository -->
-        <repository>
-            <id>papermc-repo</id>
-            <url>https://repo.papermc.io/repository/maven-public/</url>
-        </repository>
-        <!-- Simple Voice Chat Repository -->
-        <repository>
-            <id>henkelmax.public</id>
-            <url>https://maven.maxhenkel.de/repository/public</url>
-        </repository>
-    </repositories>
+contacts:
+  contact-added: "<green>✔ Added contact <gold><name></gold> (<yellow><number></yellow>) to your phone!</green>"
+  contact-removed: "<green>✔ Removed contact: <gold><name></gold>.</green>"
+  contact-not-found: "<red>✖ Contact not found: <name>.</red>"
+  invalid-device: "<red>✖ Invalid device SIM data.</red>"
+  setup-header: "<gold>--- New Contact Setup ---</gold>"
+  setup-prompt: "<gray>Type: <yellow><PlayerName> <PhoneNumber></yellow></gray>"
+  setup-example: "<dark_gray>Example: <white>Alex 555-1234</white></dark_gray>"
+  setup-cancel: "<red>Type 'cancel' to abort.</red>"
+  setup-cancelled: "<yellow>Contact creation cancelled.</yellow>"
+  invalid-format: "<red>✖ Invalid format. Expected: <PlayerName> <PhoneNumber></red>"
 
-    <dependencies>
-        <!-- Paper API -->
-        <dependency>
-            <groupId>io.papermc.paper</groupId>
-            <artifactId>paper-api</artifactId>
-            <version>${paper.version}</version>
-            <scope>provided</scope>
-        </dependency>
+gps:
+  route-calculated: "<green>✔ Route calculated to: <gold><bold><destination></bold></gold></green>"
+  arrived: "<green>✔ You have arrived at: <gold><bold><destination></bold></gold></green>"
+  cancelled: "<yellow>✖ GPS navigation cancelled.</yellow>"
+  recalculating: "<yellow>↻ Off course: recalculating route...</yellow>"
+  different-dimension: "<red>✖ Cannot navigate: destination is in another dimension.</red>"
+  unknown-destination: "<red>✖ Unknown destination: <destination></red>"
+  no-active-route: "<yellow>You do not have an active GPS route.</yellow>"
+  arrow-move-enter: "<gold><bold>--- GPS Arrow Move Mode ---</bold></gold>\n<yellow>• Scroll:</yellow> <white>Forward/Backward</white>\n<yellow>• Shift+Scroll:</yellow> <white>Up/Down</white>"
+  arrow-move-exit: "<yellow>✔ Exited Arrow Move Mode.</yellow>"
 
-        <!-- Simple Voice Chat API -->
-        <dependency>
-            <groupId>de.maxhenkel.voicechat</groupId>
-            <artifactId>voicechat-api</artifactId>
-            <version>${voicechat.version}</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
-
-    <build>
-        <defaultGoal>clean package</defaultGoal>
-        <plugins>
-            <!-- Java 21 Compiler Plugin -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.13.0</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                    <release>${java.version}</release>
-                </configuration>
-            </plugin>
-
-            <!-- Jar Plugin -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.4.2</version>
-            </plugin>
-        </plugins>
-
-        <!-- Resource Filtering for paper-plugin.yml -->
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-    </build>
-</project>
+sms:
+  message-sent: "<green>✔ Message sent to <gold><target></gold>.</green>"
+  message-received-actionbar: "<aqua>💬 New text from <gold><sender></gold>!</aqua>"
+  message-received-chat: "<gray>[<aqua>SMS</aqua>] <gold><sender></gold>: <white><message></white></gray>"
+  compose-header: "<gold>--- New Text Message ---</gold>"
+  compose-prompt: "<gray>Recipient: <gold><target></gold> (<yellow><number></yellow>)</gray>\n<gray>Type your message in chat, or type <red>'cancel'</red> to abort.</gray>"
+  compose-cancelled: "<yellow>Message creation cancelled.</yellow>"
+  empty-message: "<red>✖ Cannot send an empty text message.</red>"
+  target-airplane: "<red>✖ Cannot deliver text: Recipient has Airplane Mode enabled.</red>"
+  stored-offline: "<yellow>Recipient is currently offline. Message saved to their inbox.</yellow>"

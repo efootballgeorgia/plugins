@@ -1,0 +1,59 @@
+# ============================================================== 
+#                 RoleplayPhone & GPS Configuration
+# ============================================================== 
+
+phone-item:
+  material: "NETHER_BRICK"
+  # Legacy Custom Model Data integer (leave 0 if unused)
+  custom-model-data: 0
+  # Modern 1.21.2+ Item Model NamespacedKey for custom 3D resource packs
+  # Example: "phone:smartphone_pro" or "roleplay:devices/phone" (leave empty to disable)
+  item-model: ""
+  name: "<gold><bold>Smartphone Pro</bold></gold>"
+  require-in-hand: false
+
+call-settings:
+  timeout-seconds: 30
+  chat-prefix: "<aqua>[On Phone]</aqua> "
+
+audio:
+  ringtone:
+    sound: "BLOCK_NOTE_BLOCK_BELL"
+    volume: 1.0
+    pitch: 1.2
+  ringback:
+    sound: "BLOCK_NOTE_BLOCK_HAT"
+    volume: 0.6
+    pitch: 1.0
+  connected:
+    sound: "BLOCK_NOTE_BLOCK_CHIME"
+    volume: 1.0
+    pitch: 1.5
+  hangup:
+    sound: "BLOCK_NOTE_BLOCK_BASS"
+    volume: 0.8
+    pitch: 0.6
+
+voice-chat:
+  enabled: true
+  group-type: "OPEN"
+
+gui-titles:
+  main-menu: "Phone Home Screen"
+  dialer: "Dial Pad"
+  contacts: "Contacts Directory"
+  incoming-call: "Incoming Call..."
+  active-call: "Active Call"
+
+gps:
+  arrival-radius: 8.0
+  waypoint-radius: 5.0
+  arrow:
+    material: "SMOOTH_QUARTZ"
+    block-scale: 0.22
+    shaft-length: 5
+    wing-length: 4
+    height-offset: 1.0
+    forward-offset: 4.0
+    header-enabled: true
+    header-format: "%.2f to destination"
